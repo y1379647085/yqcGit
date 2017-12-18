@@ -1,0 +1,10 @@
+﻿<Window x:Class="MyWPF.InOutWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         Title="个人" Height="380" Width="959" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <ToolBar DockPanel.Dock="Top" Height="26" HorizontalAlignment="Left" Name="toolBar1" VerticalAlignment="Top" Width="823" >
+        </ToolBar>
+        <DatePicker Height="25" Name="datePicker1" Width="115" Margin="83,50,739,266" />
+    </Grid>
+</Window>
