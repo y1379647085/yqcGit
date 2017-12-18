@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+</head>
+<body>
+<img src="img/test.jpg" alt="test.jpg">
+	<!-- <form>
+		<input type="radio" name="test" value="Dog">狗<br>
+		<input type="radio" name="test" value="cat" checked>猫<br>
+		<input type="radio" name="test" value="Pig">猪<br>
+	</form>
+	<script src="jquery/jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+		// var checkedValue;
+		// var elements=document.getElementsByTagName('input');
+		// for (var i = 0; i <elements.length; i++) {
+		// 	if(elements[i].type==='radio' && elements[i].name==='test'&&elements[i].checked)
+		// 	{
+		// 		checkedValue=elements[i].value;
+		// 		break;
+		// 	}
+		// }
+		var checkedValue = $('input:radio[name="test"]:checked').val();
+		console.log(checkedValue);
+	</script> -->
+	<!-- <div id='divTest' class="blue">
+		test
+	</div>
+	<div id="divTest2">
+		<p>123</p>
+		<p class="child">123</p>
+		<p>123</p>
+		
+		<script type="text/javascript">
+			setTimeout(function(){
+				$('#divTest').text('Hello,world');
+				$('#divTest').remove('blue');
+				$('#divTest').addClass('bold');
+				$('#divTest').css('color','red');
+				$('#divTest2')
+				.find('p.child')
+				.css('color','red')
+				.addClass('bold')
+			}
+			,2000)
+			</script>
+	</div> -->
+	<script src="jquery/jquery-1.12.4.js"></script>
+	<script type="text/javascript">
+	window.onload=function(){
+		console.log("load");
+	}
+	$(document).ready(function(){
+		console.log("ready")
+	})
+	</script>
+}
+	
+</body>
+</html>
