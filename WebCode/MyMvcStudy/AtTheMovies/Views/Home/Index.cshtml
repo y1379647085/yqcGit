@@ -1,0 +1,26 @@
+﻿@section scripts{
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/angular-route.js"></script>
+    <script src="~/Scripts/angular-resource.js"></script>
+    <script src="~/Scripts/angular-animate.js"></script>
+    <script src="~/Client/Scripts/AtTheMovies.js"></script>
+    <script src="~/Client/Scripts/MovieService.js"></script>
+    <script src="~/Client/Scripts/ListController.js"></script>
+    <script src="~/Client/Scripts/DetailsController.js"></script>
+    <script src="~/Client/Scripts/EditController.js"></script>
+}
+<div data-ng-app="atTheMovies">
+
+    @*<ng-view></ng-view>*@
+    <div ng-controller="ListController">
+        11111
+        {{movies.length}}
+      @*<table>
+          <tr ng-repeat="movie in movies">
+              <td>{{movie.Title}}</td>
+          </tr>
+      </table>*@
+        222
+    </div>
+
+</div>

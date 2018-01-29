@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
-
+	<style>
+		.ancestors * {
+			display: block;
+			border: 2px solid lightgrey;
+			color: lightgrey;
+			padding: 5px;
+			margin: 15px;
+		}
+	</style>
 </head>
+
 <body>
-<img src="img/test.jpg" alt="test.jpg">
+	<!-- <img src="img/test.jpg" alt="test.jpg"> -->
 	<!-- <form>
 		<input type="radio" name="test" value="Dog">狗<br>
 		<input type="radio" name="test" value="cat" checked>猫<br>
@@ -49,16 +59,42 @@
 			,2000)
 			</script>
 	</div> -->
-	<script src="jquery/jquery-1.12.4.js"></script>
-	<script type="text/javascript">
+	<script src="../jquery/jquery-1.12.4.js"></script>
+	<!-- <script type="text/javascript">
 	window.onload=function(){
 		console.log("load");
 	}
 	$(document).ready(function(){
 		console.log("ready")
 	})
+
+	</script> -->
+
+	<!-- <script src="../angular/angular.min.js"></script>
+	<div ng-app="">
+		<p>名字：<input type="text" ng-model="name"></p>
+		<h1>Hello {{name}}</h1>
+	</div> -->
+
+	<div class="ancestors">
+		<div style="width:500px;">div(曾祖父元素)
+			<ul>ul（祖父元素）
+				<li>li(父元素)
+					<span>span</span>
+				</li>
+			</ul>
+		</div>
+		<div style="width:500px;">div(祖父元素)
+			<p>p(父元素)
+				<span>span</span>
+			</p>
+		</div>
+	</div>
+	<script>
+		$(function () {
+			$('span').parentsUntil('div').css({ "color": "red", "border": "2px solid red" });
+		});
 	</script>
-}
-	
 </body>
+
 </html>

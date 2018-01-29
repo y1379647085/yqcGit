@@ -59,6 +59,11 @@ namespace ExtendMethods
             return list;
         }
 
+        /// <summary>
+        /// 选择排序。
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
 
         public static int[] SelectSort(int[] list)
         {

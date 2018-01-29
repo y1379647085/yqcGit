@@ -1,0 +1,35 @@
+﻿@model MyAsp.Models.UserModel
+
+@{
+    ViewBag.Title = "User";
+}
+
+@{
+         Layout = null;
+    }
+
+<h2>User</h2>
+@using (Html.BeginForm("Index", "User", FormMethod.Get))
+{
+
+    <div>
+        用户名：
+    </div>
+        <div>
+            @Html.TextBoxFor(model => model.UserName)
+        </div>
+        <div>
+            密码：
+        </div>
+        <div>
+            @Html.PasswordFor(model => model.Password)
+        </div>
+        <div>
+            <input type="submit" value="登录" />
+        </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
