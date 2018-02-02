@@ -65,7 +65,10 @@ namespace MyUI
             //VirtualClassFather virtualClass = new VirtualClass();
             //virtualClass.CreateNode();
             //var delegateclass = new BeginInvokeClass();
-            BeginInvokeClass.start();
+            //BeginInvokeClass.start();
+            ChildClass2 child = new ChildClass2("1", "2d");
+            child.Test1();
+            
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
