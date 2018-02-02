@@ -31,29 +31,7 @@ namespace ReNameTool
                 if (fbd.ShowDialog() == DialogResult.OK)
                 {
                     buttonEdit1.Text = fbd.SelectedPath;
-                    _bindlistProperty.Clear();
-                    var subDirectorys = Directory.GetDirectories(fbd.SelectedPath);
-                    if (subDirectorys.Length > 0)
-                        foreach (var subDir in subDirectorys)
-                        {
-                            var files = Directory.GetFiles(subDir);
-                            foreach (var file in files)
-                            {
-                                //var dr = dt.NewRow();
-                                //dr[0] = file;
-                                //    //Path.GetDirectoryName(subDir);
-                                //dr[1] = subDir.Substring(subDir.LastIndexOf("\\")+1);
-                                //dr[2] = Path.GetFileName(file);
-                                //dr[3] = Path.GetFileNameWithoutExtension(file);
-                                //    dt.Rows.Add(dr);
-                                var fileProperty = new FileProperty();
-                                fileProperty.DirPath = file;
-                                fileProperty.DirName = subDir.Substring(subDir.LastIndexOf("\\") + 1);
-                                fileProperty.FileName = Path.GetFileName(file);
-                                fileProperty.AfterName = Path.GetFileNameWithoutExtension(file);
-                                _bindlistProperty.Add(fileProperty);
-                            }
-                        }
+                    GetDirectoryInfosToGrid();
                 }
 
                 gridControl1.DataSource = _bindlistProperty;
@@ -65,16 +43,6 @@ namespace ReNameTool
                 Console.WriteLine(exception);
                 throw;
             }
-        }
-
-        private DataTable CreateFileNameDataTable()
-        {
-            var dt = new DataTable();
-            dt.Columns.Add("DirPath", typeof(string));
-            dt.Columns.Add("DirName", typeof(string));
-            dt.Columns.Add("FileName", typeof(string));
-            dt.Columns.Add("AfterName", typeof(string));
-            return dt;
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)
@@ -105,32 +73,7 @@ namespace ReNameTool
 
         private void buttonEdit1_EditValueChanged(object sender, EventArgs e)
         {
-            _bindlistProperty.Clear();
-            var subDirectorys = Directory.GetDirectories(buttonEdit1.Text);
-            if (subDirectorys.Length > 0)
-                foreach (var subDir in subDirectorys)
-                {
-                    var files = Directory.GetFiles(subDir);
-                    foreach (var file in files)
-                    {
-                        //var dr = dt.NewRow();
-                        //dr[0] = file;
-                        //    //Path.GetDirectoryName(subDir);
-                        //dr[1] = subDir.Substring(subDir.LastIndexOf("\\")+1);
-                        //dr[2] = Path.GetFileName(file);
-                        //dr[3] = Path.GetFileNameWithoutExtension(file);
-                        //    dt.Rows.Add(dr);
-                        var fileProperty = new FileProperty();
-                        fileProperty.DirPath = file;
-                        fileProperty.DirName = subDir.Substring(subDir.LastIndexOf("\\") + 1);
-                        fileProperty.FileName = Path.GetFileName(file);
-                        fileProperty.AfterName = Path.GetFileNameWithoutExtension(file);
-                        _bindlistProperty.Add(fileProperty);
-                    }
-                }
-
-            gridControl1.DataSource = _bindlistProperty;
-            gridControl1.RefreshDataSource();
+            GetDirectoryInfosToGrid();
         }
 
         private void gridView1_CellValueChanged(object sender, CellValueChangedEventArgs e)
@@ -163,12 +106,54 @@ namespace ReNameTool
             buttonEdit1.Text = path;
         }
 
-        private class FileProperty
+        private void GetDirectoryInfosToGrid()
         {
-            public string DirPath { get; set; }
-            public string DirName { get; set; }
-            public string FileName { get; set; }
-            public string AfterName { get; set; }
+            _bindlistProperty.Clear();
+            var subDirectorys = Directory.GetDirectories(buttonEdit1.Text);
+            if (subDirectorys.Length > 0)
+                foreach (var subDir in subDirectorys)
+                {
+                    var files = Directory.GetFiles(subDir);
+                    foreach (var file in files)
+                    {
+                        //var dr = dt.NewRow();
+                        //dr[0] = file;
+                        //    //Path.GetDirectoryName(subDir);
+                        //dr[1] = subDir.Substring(subDir.LastIndexOf("\\")+1);
+                        //dr[2] = Path.GetFileName(file);
+                        //dr[3] = Path.GetFileNameWithoutExtension(file);
+                        //    dt.Rows.Add(dr);
+                        var fileProperty = new FileProperty
+                        {
+                            DirPath = file,
+                            DirName = subDir.Substring(subDir.LastIndexOf("\\") + 1),
+                            FileName = Path.GetFileName(file),
+                            AfterName = Path.GetFileNameWithoutExtension(file)
+                        };
+                        _bindlistProperty.Add(fileProperty);
+                    }
+                }
+
+            gridControl1.DataSource = _bindlistProperty;
+            gridControl1.RefreshDataSource();
         }
+
+        private DataTable CreateFileNameDataTable()
+        {
+            var dt = new DataTable();
+            dt.Columns.Add("DirPath", typeof(string));
+            dt.Columns.Add("DirName", typeof(string));
+            dt.Columns.Add("FileName", typeof(string));
+            dt.Columns.Add("AfterName", typeof(string));
+            return dt;
+        }       
+    }
+
+    class FileProperty
+    {
+        public string DirPath { get; set; }
+        public string DirName { get; set; }
+        public string FileName { get; set; }
+        public string AfterName { get; set; }
     }
 }
