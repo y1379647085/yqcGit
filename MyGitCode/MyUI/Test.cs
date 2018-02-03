@@ -38,6 +38,18 @@ namespace MyUI
         {
             Test();
         }
+        public virtual void CheckTest()
+        {
+            try
+            {
+                Test();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
         public virtual void Test()
         {
             var s=P1 + P2;
