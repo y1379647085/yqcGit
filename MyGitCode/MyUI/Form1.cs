@@ -22,6 +22,11 @@ namespace MyUI
             InitializeComponent();
         }
 
+        public int GetTempNum()
+        {
+            return 0;
+        }
+
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             //try

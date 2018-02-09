@@ -38,26 +38,53 @@ namespace MyUI
         {
             Test();
         }
-        public virtual void CheckTest()
+        public  int CheckTest()
         {
+            Form1 frm1 = null;
             try
             {
-                Test();
+                frm1=new Form1();
+                //Test();
+                return frm1.GetTempNum();
+
             }
             catch (Exception e)
             {
                 Console.WriteLine(e);
                 throw;
             }
+            finally
+            {
+                frm1.Dispose();
+            }
         }
         public virtual void Test()
         {
-            var s=P1 + P2;
-            s.ToString();
+            try
+            {
+                var s = P1 + P2;
+                string s1 = null;
+                s1.ToString();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                //throw;
+            }
+         
         }
     }
     class ChildClass2 : ChildClass1
     {
+        public Dictionary<string, string> _users { get; } = new Dictionary<string, string>()
+
+        {
+
+            ["users"] = "Venkat Baggu Blog",
+
+            ["Features"] = "Whats new in C# 6"
+
+        };
         public ChildClass2(string p1, string p2) : base(p1, p2)
         {
         }
@@ -67,6 +94,7 @@ namespace MyUI
         //}
         public override void Test()
         {
+            
             try
             {
                 var s = P1 + P2;
@@ -78,8 +106,12 @@ namespace MyUI
             {
                 Console.WriteLine(e);
                 throw;
-            }
-           
+            }          
         }
+
+       
+    }
+    public static class TestClass1
+    {
     }
 }
